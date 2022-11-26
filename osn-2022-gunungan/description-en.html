@@ -1,0 +1,158 @@
+<!-- Title: Building Fruit Pile -->
+
+<h3>Description</h3>
+
+<p>
+  At a fruit market in Pak Dengklek's hometown, there are $N$ fruit stalls located sequentially in a single row.
+  The fruit stalls are numbered from $1$ to $N$ from left to right.
+  Fruit stall $i$ only sells fruits of type $A_i$.
+  Each fruit sold in stall $i$ has a weight of $W_i$ and a size of $V_i$.
+</p><p>
+  As a fruit marketing agent, Pak Dengklek wants to kickstart the fruit sales in his hometown.
+  To do that, Pak Dengklek will prepare a pickup truck, then build a single fruit pile on the truck.
+  Pak Dengklek plans to build the pile by using exactly a single fruit of each available type in the fruit stalls in the fruit market.
+  To make it easier to record which fruits are already in the fruit pile, Pak Dengklek will buy the fruits in ascending order of type.
+  In other words, Pak Dengklek will start by buying a fruit of type $1$ (if there is any), then buy a fruit of type $2$ (if there is any), and so on, for all available fruit types.
+</p><p>
+  Initially, Pak Dengklek chooses any stall to start his plan.
+  Then, Pak Dengklek can buy fruit in that stall or move to a stall immediately adjacent to it.
+  Pak Dengklek continues to do this until he finishes his plan.
+</p><p>
+  Pak Dengklek's truck has a load factor of $b$, whose value depends on the fruit pile currently on the truck.
+  Initially, the value of $b$ is $1$. Each time Pak Dengklek buys a single fruit in stall $i$, Pak Dengklek's truck needs $V_i \times b$ units of energy to carry that fruit onto the top of the pile; after that, the load factor $b$ will change to $W_i \times b$.
+  Pak Dengklek's truck also needs $b$ units of energy each time Pak Dengklek moves from a stall to another adjacent stall.
+</p><p>
+  Pak Dengklek wants to calculate the minimum total units of energy needed to finish the plan.
+  Help Pak Dengklek calculate this value!
+  Due to the uniqueness of Pak Dengklek's hometown, it is guaranteed that the minimum total energy needed is not more than $10^{18}$.
+</p>
+
+<h3>Constraints</h3>
+
+<ul>
+  <li>$1 \le N \le 100\;000$</li>
+  <li>$1 \le A_i \le N$</li>
+  <li>$1 \le W_i, V_i \le 10^9$</li>
+  <li>It is guaranteed that the minimum total units of energy needed is not more than $10^{18}$.</li>
+</ul>
+
+<h3>Subtasks</h3>
+
+<ol>
+  <li>
+    &nbsp;&nbsp;(9 points) Contains only the following test case:<br/>
+    $N = 9$, $A = [1, 2, 4, 3, 5, 3, 6, 1, 2]$, $W = [1, 2, 1, 3, 1, 3, 1, 1, 2]$, $V = [3, 3, 1, 5, 5, 5, 1, 3, 3]$.
+  </li>
+  <li>&nbsp;&nbsp;(4 points) $A_i = 1$</li>
+  <li>(10 points) All fruit stalls sell different types of fruit.</li>
+  <li>(14 points) $N \le 2000$, $W_i \le 2$</li>
+  <li>(27 points) $N \le 2000$</li>
+  <li>(17 points) $W_i = 1$</li>
+  <li>(19 points) No additional constraints.</li>
+</ol>
+
+<h3>Input</h3>
+
+<p>
+  The input is given with the following format:
+</p><pre>
+N
+A<sub>1</sub> A<sub>2</sub> … A<sub>N</sub>
+W<sub>1</sub> W<sub>2</sub> … W<sub>N</sub>
+V<sub>1</sub> V<sub>2</sub> … V<sub>N</sub>
+</pre>
+
+<h3>Output</h3>
+
+<p>
+  Output a line containing an integer representing the minimum total energy needed to finish the plan.
+</p>
+
+<h3>Sample Input 1</h3>
+
+<pre>
+3
+1 1 2
+5 4 5
+3 2 10
+</pre>
+
+<h3>Sample Output 1</h3>
+
+<pre>
+46
+</pre>
+
+<h3>Explanation of Sample 1</h3>
+
+<p>
+  Pak Dengklek can finish the plan as follows:
+</p>
+<ol>
+  <li>Pak Dengklek starts the plan from stall $2$.</li>
+  <li>
+    Buy a fruit of type $1$ in stall $2$,
+    which takes $1 \times 2 = 2$ units of energy, and changes the load factor to $4 \times 1 = 4$.
+  </li>
+  <li>Move to stall $3$, which takes $4$ units of energy.</li>
+  <li>
+    Buy a fruit of type $2$ in stall $3$,
+    which takes $10 \times 4 = 40$ units of energy, and changes the load factor to $5 \times 4 = 20$.
+  </li>
+</ol>
+
+<p>
+  The total energy needed by Pak Dengklek's truck to finish the plan in that way is $2 + 4 + 40 = 46$.
+  There are no other ways to finish Pak Dengklek's plan with less energy.
+</p>
+
+
+<h3>Sample Input 2</h3>
+
+<pre>
+8
+1 3 5 2 1 3 3 5
+2 2 4 1 2 3 3 5
+4 8 1 6 7 1 1 2
+</pre>
+
+<h3>Sample Output 2</h3>
+
+<pre>
+47
+</pre>
+
+<h3>Explanation of Sample 2</h3>
+
+<p>
+  Pak Dengklek can finish the plan as follows:
+</p>
+<ol>
+  <li>Pak Dengklek starts the plan from stall $5$.</li>
+  <li>
+    Buy a fruit of type $1$ in stall $5$,
+    which takes $1 \times 7 = 7$ units of energy, and changes the load factor to $2 \times 1 = 2$.
+  </li>
+  <li>Move to stall $4$, which takes $2$ units of energy.</li>
+  <li>
+    Buy a fruit of type $2$ in stall $4$,
+    which takes $6 \times 2 = 12$ units of energy, and changes the load factor to $1 \times 2 = 2$.
+  </li>
+  <li>Move to stall $5$, which takes $2$ units of energy.</li>
+  <li>Move to stall $6$, which takes $2$ units of energy.</li>
+  <li>Move to stall $7$, which takes $2$ units of energy.</li>
+  <li>
+    Buy a fruit of type $3$ in stall $7$,
+    which takes $1 \times 2 = 2$ units of energy, and changes the load factor to $2 \times 3 = 6$.
+  </li>
+  <li>Move to stall $8$, which takes $6$ units of energy.</li>
+  <li>
+    Buy a fruit of type $5$ in stall $8$,
+    which takes $2 \times 6 = 12$ units of energy, and changes the load factor to $5 \times 6 = 30$.
+  </li>
+</ol>
+
+<p>
+  The total energy needed by Pak Dengklek's truck to finish the plan in that way is $7 + 2 + 12 + 2 + 2 + 2 + 2 + 6 + 12 = 47$.
+  There are no other ways to finish Pak Dengklek's plan with less energy.
+</p>

@@ -1,0 +1,220 @@
+<!-- Title: Building Tunnels -->
+
+<h3>Description</h3>
+
+<p>
+  Pak Dengklek owns $N$ underground mining sites numbered from $1$ to $N$.
+  For each pair of different sites $u$ and $v$, Pak Dengklek can build a tunnel connecting them which costs $C_{u,v}$.
+  Pak Dengklek knows for sure that either $C_{u,v} = A$ or $C_{u,v} = B$, but Pak Dengklek does not know the values of $A$, $B$, and $C_{u,v}$.
+</p><p>
+  Pak Dengklek has an underground measuring device.
+  To use the device, Pak Dengklek first marks each site with a red, yellow, or green color.
+  Then, the device will compute the total cost required to build all possible tunnels connecting a yellow and a green site.
+  The colors red, yellow, and green are represented by the numbers $0$, $1$, and $2$ respectively.
+  In other words, if each site $i$ is marked with color $W_i$, then the device will compute the value of $\displaystyle\sum\limits_{W_u = 1} \sum\limits_{W_v = 2} C_{u,v}$.
+</p><p>
+  Pak Dengklek wants to build one or more tunnels such that each pair of sites are connected,
+  either directly or indirectly through a series of tunnels.
+  However, the device can only be used at most $2000$ times.
+  Help Pak Dengklek determine the pairs of sites that need to be connected, such that the total cost required is minimum.
+  If there are multiple possible ways, you may output any of them.
+</p>
+
+<h3>Constraints</h3>
+
+<ul>
+  <li>$2 \le N \le 140$</li>
+  <li>$1 \le A < B \le 1000$</li>
+  <li>$C_{u,v} = A$ or $C_{u,v} = B$</li>
+  <li>$C_{u,v} = C_{v,u}$</li>
+</ul>
+
+<h3>Subtasks</h3>
+
+<ol>
+  <li>(14 points) $N \le 5$</li>
+  <li>(11 points) $N \le 60$</li>
+  <li>(16 points) $A = 1$, $B = 2$, and for each site $u$, there is at most one site $v$ (with $u < v$) satisfying $C_{u,v} = A$.</li>
+  <li>(15 points) $A = 1$, $B = 2$</li>
+  <li>&nbsp;&nbsp;(9 points) There is at most $1$ pair of sites $(u,v)$ (with $u < v$) satisfying $C_{u,v} = A$.</li>
+  <li>(35 points) No additional constraints.</li>
+</ol>
+
+<h3>Problem Type Information</h3>
+
+<p>
+  This is an "interactive" problem. 
+  In this problem, you will interact with the judge's program through standard input (stdin) and standard output (stdout). 
+  See the following interaction carefully.
+</p>
+
+<h3>Interaction</h3>
+
+<p>
+  In the beginning, you will be given an integer $N$ with the following format:
+</p><pre>
+N
+</pre>
+
+<p>Then, for not more than $2000$ times, you can output to the standard output with the following format:</p>
+
+<pre>
+? W<sub>1</sub> W<sub>2</sub> … W<sub>N</sub>
+</pre>
+
+<p>
+  This means you marked site $i$ with color $W_i$, then used the underground measuring device.
+  The values of $W_i$ must satisfy $0 \le W_i \le 2$.
+  For each of the outputs, the total cost required (denoted by $T$) will be given by the device from input with the following format:
+</p>
+
+<pre>
+T
+</pre>
+
+<p>
+  In the end, you have to answer by output with the following format:
+</p>
+
+<pre>
+! M
+u<sub>1</sub> v<sub>1</sub>
+u<sub>2</sub> v<sub>2</sub>
+⋮
+u<sub>M</sub> v<sub>M</sub>
+</pre>
+
+<p>
+  This means you built $M$ tunnels numbered from $1$ to $M$.
+  Tunnel $j$ connects site $u_j$ and site $v_j$.
+</p>
+
+<h3>Scoring</h3>
+
+<p>
+  If you did not connect all sites, did not find the minimum possible total cost, used the device more than $2000$ times, or provided input in the wrong format, you will get a "Wrong Answer" verdict.
+  Your answer will be considered correct if you successfully connected all sites with the minimum possible total cost without using the device more than $2000$ times, and you will get full or partial scores.
+</p>
+
+<p>
+  In subtask 6, you can get partial scores.
+  The formula used to determine your score depends on the number of times you used the underground measuring device.
+  Suppose that you used the device $Q$ times.
+  The score you get is calculated based on the following table:
+</p>
+
+<table border="1">
+  <thead>
+    <th>Condition</th>
+    <th>Points</th>
+  </thead>
+  <tbody style="text-align: center;">
+    <tr><td style="text-align: left;">$2000 < Q$</td><td>$0$</td></tr>
+    <tr><td>$1170 < Q \le 2000$</td><td>$\lfloor 5 + \large\frac{2000}{Q - 1000} \rfloor$</td></tr>
+    <tr><td>$1000 < Q \le 1170$</td><td>$\lfloor 36 - 2^{\small\frac{Q - 1000}{40}} \rfloor$</td></tr>
+    <tr><td style="text-align: right;">$Q \le 1000$</td><td>$35$</td></tr>
+  </tbody>
+</table>
+
+<h3>Interaction Sample</h3>
+
+<p>
+  In the following sample, $N = 4$, $A = 1$, $B = 2$, and $C_{u,v}$:
+</p>
+
+<ul>
+  <li>$C_{1,2} = 1$;</li>
+  <li>$C_{1,3} = 1$;</li>
+  <li>$C_{1,4} = 2$;</li>
+  <li>$C_{2,3} = 2$;</li>
+  <li>$C_{2,4} = 2$;</li>
+  <li>$C_{3,4} = 2$.</li>
+</ul>
+
+<p>
+  The mining sites and the costs to build each tunnel are illustrated by the following image.
+</p>
+
+<p style="text-align: center;">
+  <img src="render/sample-complete.png" style="width: 300px;">
+</p>
+
+<table>
+  <tr>
+    <th>Input</th>
+    <th>Output</th>
+    <th>Explanation</th>
+  </tr>
+  <tr>
+    <td><pre>4</pre></td>
+    <td></td>
+    <td>This means there are $4$ mining sites.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><pre>? 1 2 2 0</pre></td>
+    <td>You mark site $1$ with yellow, sites $2$ and $3$ with green, and site $4$ with red.</td>
+  </tr>
+  <tr>
+    <td><pre>2</pre></td>
+    <td></td>
+    <td>The device computes the total cost required, which is $2$.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><pre>? 2 2 2 1</pre></td>
+    <td>You mark sites $1$, $2$, and $3$ with green, and site $4$ with yellow.</td>
+  </tr>
+  <tr>
+    <td><pre>6</pre></td>
+    <td></td>
+    <td>The device computes the total cost required, which is $6$.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><pre>? 0 1 2 0</pre></td>
+    <td>You mark site $2$ with yellow, site $3$ with green, and sites $1$ and $4$ with red.</td>
+  </tr>
+  <tr>
+    <td><pre>2</pre></td>
+    <td></td>
+    <td>The device computes the total cost required, which is $2$.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><pre>! 3
+1 2
+1 3
+1 4</pre></td>
+    <td>
+      You build tunnels connecting the pairs of sites $(1,2)$, $(1,3)$, and $(1,4)$.
+      You could also build tunnels connecting the pairs of sites $(1,2)$, $(1,3)$, and $(3,4)$ with the same total cost.
+    </td>
+  </tr>
+  <tr>
+    <td>(end)</td>
+    <td>(end)</td>
+    <td>The interaction ends, the answer is correct, and you get Accepted for this test case.</td>
+  </tr>
+</table>
+
+<p>
+  All tunnels built are illustrated by the following image.
+</p>
+
+<p style="text-align: center;">
+  <img src="render/sample-constructed.png" style="width: 300px;">
+</p>
+
+<h3>Warning</h3>
+
+<p>
+  Always flush every time your program gives an output.
+</p>
+
+<ul>
+  <li>For library <code>stdio.h</code> (<code>cstdio</code>):<pre>
+fflush(stdout);</pre></li>
+  <li>For library <code>iostream</code>:<pre>
+std::cout << std::flush;</pre></li>
+</ul>

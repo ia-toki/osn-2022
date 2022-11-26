@@ -1,0 +1,208 @@
+<!-- Title: Building Roads -->
+
+<h3>Description</h3>
+
+<p>
+  Pak Dengklek is a foreman of road construction projects in his hometown.
+  Each road consists of a gravel base paved with asphalt.	 
+</p>
+<p>
+  Pak Dengklek will buy the construction materials from $N$ shops, numbered from $1$ to $N$.
+  Each shop only sells one kind of material.
+  Shop $i$ sells the materials as follows:
+</p>
+<ul>
+  <li>If $T_i = 1$, then the shop sells gravel. One sack of gravel bought from this shop can build $A_i$ metres of gravel base for a road.</li>	 
+  <li>If $T_i = 2$, then the shop sells asphalt. One sack of asphalt bought from this shop can pave $A_i$ metres of gravel base.</li>	 
+</ul>
+<p>
+  Pak Dengklek has a unique method of building a road:
+</p>
+<ol>
+  <li>Choose two integers $L$ and $R$ with $1 \le L \le R \le N$.</li>
+  <li>
+    Buy materials from shops $L$ to $R$ sequentially.
+    In shop $L$, buy at least one sack of material.
+    In each of the next shops, the number of sacks bought must be strictly greater than in the previous one.
+  </li>
+  <li>Build the gravel base of a road with all gravels bought.</li>
+  <li>
+    Pave the gravel base with the asphalt bought.
+    If the amount of asphalt is insufficient to pave the entire road, the remaining road segment is left unpaved.
+    If there is some remaining asphalt, it will be thrown away and not be usable anymore.
+  </li>
+  <li>Pak Dengklek must buy the materials from the shops in such a way as to minimize the length of the unpaved road segment.</li>
+</ol>
+<p>
+  Pak Dengklek will do $N$ road construction projects, numbered from $1$ to $N$.
+  In the $j$-th project, Pak Dengklek will build $j$ roads.
+  Pak Dengklek will build the $k$-th road in the $j$-th project according to the method above by choosing $L = k$ and $R = j$.
+</p>
+<p>
+  From all roads built in all projects, Pak Dengklek wants to know the total length of the unpaved road segments.
+  Because this total length might be very large, Pak Dengklek only wants to know the value modulo $1\;000\;000\;007$.
+  Help Pak Dengklek compute this value!
+</p>
+
+<h3>Constraints</h3>
+
+<ul>
+  <li>$1 \le N \le 100\;000$</li>
+  <li>$1 \le A_i \le 100\;000$</li>
+  <li>$T_i = 1$ or $T_i = 2$</li>
+</ul>
+
+<h3>Subtasks</h3>
+
+<ol>
+  <li>
+    &nbsp;&nbsp;(6 points) Contains only the following test case:<br/>
+    $N = 4$, $A = [3, 2, 2, 3]$, $T = [1, 2, 2, 1]$.
+  </li>
+  <li>(11 points) $N \le 400$, $T_i = 1$</li>
+  <li>&nbsp;&nbsp;(9 points) $N \le 3000$, $T_i = 1$</li>
+  <li>(10 points) $T_i = 1$</li>
+  <li>(21 points) $N \le 400$</li>
+  <li>&nbsp;&nbsp;(9 points) $N \le 3000$</li>
+  <li>(17 points) There is no $i$ satisfying $T_i = 1$ and $T_{i+1} = 2$.</li>
+  <li>(17 points) No additional constraints.</li>
+</ol>
+
+<h3>Input</h3>
+
+<p>
+  The input is given with the following format:
+</p><pre>
+N
+A<sub>1</sub> A<sub>2</sub> … A<sub>N</sub>
+T<sub>1</sub> T<sub>2</sub> … T<sub>N</sub>
+</pre>
+
+<h3>Output</h3>
+
+<p>
+  Output a single line containing an integer representing the total length of the unpaved road segments modulo $1\;000\;000\;007$.
+</p>
+
+<h3>Sample Input 1</h3>
+
+<pre>
+7
+3 1 1 2 1 2 3
+1 2 1 2 1 2 1
+</pre>
+
+<h3>Sample Output 1</h3>
+
+<pre>
+53
+</pre>
+
+<h3>Explanation of Sample 1</h3>
+
+<p>
+  The following table denotes the lengths of the unpaved road segment for each road in each project.
+</p>
+
+<table border="1">
+  <thead>
+    <th>Project</th>
+    <th>$1$-st road</th>
+    <th>$2$-nd road</th>
+    <th>$3$-rd road</th>
+    <th>$4$-th road</th>
+    <th>$5$-th road</th>
+    <th>$6$-th road</th>
+    <th>$7$-th road</th>
+  </thead>
+  <tbody style="text-align: center;">
+    <tr><td>$1$</td><td>$3$</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+    <tr><td>$2$</td><td>$0$</td><td>$0$</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+    <tr><td>$3$</td><td>$4$</td><td>$1$</td><td>$1$</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+    <tr><td>$4$</td><td>$0$</td><td>$0$</td><td>$0$</td><td>$0$</td><td>-</td><td>-</td><td>-</td></tr>
+    <tr><td>$5$</td><td>$0$</td><td>$0$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>-</td><td>-</td></tr>
+    <tr><td>$6$</td><td>$0$</td><td>$0$</td><td>$0$</td><td>$0$</td><td>$0$</td><td>$0$</td><td>-</td></tr>
+    <tr><td>$7$</td><td>$10$</td><td>$7$</td><td>$7$</td><td>$6$</td><td>$6$</td><td>$4$</td><td>$3$</td></tr>
+  </tbody>
+</table>
+
+<p>
+  As an example, Pak Dengklek can build the $1$-st road in the $7$-th project with the following strategy.
+</p>
+
+<ol>
+  <li>Buy $1$ sack of gravel in shop $1$, which is enough for $3$ metres of road base.</li>
+  <li>Buy $4$ sacks of asphalt in shop $2$, which is enough for $4$ metres of road pavement.</li>
+  <li>Buy $5$ sacks of gravel in shop $3$, which is enough for $5$ metres of road base.</li>
+  <li>Buy $7$ sacks of asphalt in shop $4$, which is enough for $14$ metres of road pavement.</li>
+  <li>Buy $8$ sacks of gravel in shop $5$, which is enough for $8$ metres of road base.</li>
+  <li>Buy $9$ sacks of asphalt in shop $6$, which is enough for $18$ metres of road pavement.</li>
+  <li>Buy $10$ sacks of gravel in shop $7$, which is enough for $30$ metres of road base.</li>
+</ol>
+
+<p>
+  With this strategy, Pak Dengklek obtains enough gravel to build $46$ metres of road base and enough asphalt to pave $36$ metres of gravel base.
+  This way, the length of the unpaved road segment is $10$ metres, which is the shortest length possible for this road.
+</p>
+
+<p>
+  As another example, Pak Dengklek can build the $2$-nd road in the $5$-th project with the following strategy.
+</p>
+
+<ol>
+  <li>Buy $2$ sacks of asphalt in shop $2$, which is enough for $2$ metres of road pavement.</li>
+  <li>Buy $4$ sacks of gravel in shop $3$, which is enough for $4$ metres of road base.</li>
+  <li>Buy $5$ sacks of asphalt in shop $4$, which is enough for $10$ metres of road pavement.</li>
+  <li>Buy $7$ sacks of gravel in shop $5$, which is enough for $7$ metres of road base.</li>
+</ol>
+
+<p>
+  With this strategy, Pak Dengklek obtains enough gravel to build $11$ metres of road base and enough asphalt to pave $12$ metres of gravel base.
+  This way, there is no unpaved road segment.
+  Note that the remaining asphalt is thrown away and cannot be used for another road in any project.
+</p>
+
+<h3>Sample Input 2</h3>
+
+<pre>
+2
+98427 77780
+1 1
+</pre>
+
+<h3>Sample Output 2</h3>
+
+<pre>
+430194
+</pre>
+
+<h3>Explanation of Sample 2</h3>
+
+<p>
+  The following table denotes the lengths of the unpaved road segment for each road in each project.
+</p>
+
+<table border="1">
+  <thead>
+    <th>Project</th>
+    <th>$1$-st road</th>
+    <th>$2$-nd road</th>
+  </thead>
+  <tbody style="text-align: center;">
+    <tr><td>$1$</td><td>$98427$</td><td>-</td></tr>
+    <tr><td>$2$</td><td>$253987$</td><td>$77780$</td></tr>
+  </tbody>
+</table>
+
+<p>
+  As an example, Pak Dengklek can build the $2$-nd road in the $2$-nd project with the following strategy.
+</p>
+
+<ol>
+  <li>Buy $1$ sack of gravel in shop $2$, which is enough for $77780$ metres of road base.</li>
+</ol>
+
+<p>
+  With that strategy, Pak Dengklek obtains enough gravel to build $77780$ metres of road base and no asphalt.
+  This way, the length of the unpaved road segment is $77780$ metres.
+</p>

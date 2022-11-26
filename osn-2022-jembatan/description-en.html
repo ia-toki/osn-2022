@@ -1,0 +1,159 @@
+<!-- Title: Building Bridges -->
+
+<h3>Description</h3>
+
+<p>
+  In Pak Dengklek's hometown, there are $N$ ports and $M$ roads connecting them.
+  The ports are numbered from $1$ to $N$, and the roads are numbered from $1$ to $M$.
+  Road $j$ connects port $U_j$ and port $V_j$.
+</p>
+<p>
+  Port $i$ has a height of $H_i$ metres above sea level.
+  For each pair of different ports $u$ and $v$, Pak Dengklek can build a bridge connecting them for $H_u + H_v$ million rupiahs.
+  For security reasons, each port can only be connected with <b>at most one</b> bridge.
+</p>
+<p>
+  Pak Dengklek wants to build zero or more bridges with the minimum possible total cost such that all ports are connected.
+  In other words, for each pair of different ports, there must be a path that connects them, either directly or indirectly, through roads or bridges.
+  Help Pak Dengklek determine the minimum possible total cost to connect all ports!
+  You should also inform Pak Dengklek if it turns out to be impossible to connect all ports.
+</p>
+<p>
+  Pak Dengklek also has a curiosity level of $Q$.
+  If $Q = 1$ and there is a way to connect all ports, you should also determine which pairs of ports need to be connected.  
+  If there are multiple possible ways, you may output any of them.
+  However, if $Q = 0$, you may output only the minimum possible total cost.
+</p>
+
+<h3>Constraints</h3>
+
+<ul>
+  <li>$1 \le N \le 100\;000$</li>
+  <li>$0 \le M \le 200\;000$</li>
+  <li>$Q = 0$ or $Q = 1$</li>
+  <li>$1 \le H_i \le 10^9$</li>
+  <li>$1 \le U_j < V_j \le N$</li>
+  <li>$U_i \ne U_j$ or $V_i \ne V_j$, if $i \ne j$</li>
+</ul>
+
+<h3>Subtasks</h3>
+
+<ol>
+  <li>&nbsp;&nbsp;(7 points) Contains only the following test case: <br/>
+  $N = 15$, $M = 15$, $Q = 1$,<br>
+  $H = [1, 6, 9, 1, 6, 10, 2, 6, 8, 1, 7, 10, 3, 4, 5]$,<br>
+  $U = [1, 2, 1, 4, 5, 4, 7, 7, 8, 10, 11, 10, 13, 13, 14]$,<br>
+  $V = [2, 3, 3, 6, 6, 5, 9, 8, 9, 12, 12, 11, 14, 15, 15]$.
+  <li>&nbsp;&nbsp;(8 points) $M = N - 2$, $U_j = j$, $V_j = j + 1$</li>
+  <li>(11 points) $N = 2M$, $U_j = 2j - 1$, $V_j = 2j$</li>
+  <li>(27 points) $H_i = 1$</li>
+  <li>(10 points) $N \le 1000$, at most $1$ bridge is needed to connect all ports.</li>
+  <li>(13 points) $N \le 1000$, $Q = 0$</li>
+  <li>(12 points) $Q = 0$</li>
+  <li>(12 points) No additional constraints.</li>
+</ol>
+
+<h3>Input</h3>
+
+<p>
+  The input is given with the following format:
+</p>
+
+<pre>
+N M Q
+H<sub>1</sub> H<sub>2</sub> … H<sub>N</sub>
+U<sub>1</sub> V<sub>1</sub>
+U<sub>2</sub> V<sub>2</sub>
+⋮
+U<sub>M</sub> V<sub>M</sub>
+</pre>
+
+<h3>Output</h3>
+
+<p>
+  The first line contains the minimum possible total cost in million rupiahs to connect all ports, or <code>-1</code> if it is impossible.
+</p>
+<p>
+  If $Q = 1$ and there is a way to connect all ports,
+  then the second line contains an integer $K$ representing the number of bridges Pak Dengklek needs to build.
+  Then, each of the next $K$ lines contains two integers $X_k$ and $Y_k$, representing that the $k$-th bridge should connect port $X_k$ and port $Y_k$.
+</p>
+<p>
+  However, if $Q = 0$, you may still output which pairs of ports should be connected with a bridge, even though it will not affect the evaluation.
+</p>
+
+<h3>Sample Input 1</h3>
+
+<pre>
+5 2 1
+4 6 1 3 2
+1 3
+2 4
+</pre>
+
+<h3>Sample Output 1</h3>
+
+<pre>
+10
+2
+1 4
+5 3
+</pre>
+
+<h3>Explanation of Sample 1</h3>
+
+<p>
+  This sample is illustrated by the following image.
+  Each yellow line represents a bridge that should be built, with the cost written next to it.
+  Each dotted line represents a road.
+</p>
+<p style="text-align: center;">
+  <img src="render/sample-1.png" style="width: 300px;">
+</p>
+<p>
+  The costs to build the two bridges are $H_1 + H_4 = 4 + 3 = 7$ and $H_3 + H_5 = 1 + 2 = 3$.
+  The total cost is $7 + 3 = 10$, which is the minimum possible total cost.
+  There is no way to achieve a cost of less than $10$.
+</p>
+
+<h3>Sample Input 2</h3>
+
+<pre>
+5 1 1
+2 1 4 3 4
+3 5
+</pre>
+
+<h3>Sample Output 2</h3>
+
+<pre>
+-1
+</pre>
+
+<h3>Explanation of Sample 2</h3>
+
+<p>
+  It is impossible to connect all ports since each port can only be connected to at most one bridge.
+  Therefore, even though $Q = 1$, you do not need to output which pairs of ports should be connected with a bridge.
+</p>
+
+<h3>Sample Input 3</h3>
+
+<pre>
+3 1 0
+2 8 1
+1 3
+</pre>
+
+<h3>Sample Output 3</h3>
+
+<pre>
+9
+</pre>
+
+<h3>Explanation of Sample 3</h3>
+
+<p>
+  Pak Dengklek should build a bridge connecting port $2$ and port $3$.
+  You do not need to output which pairs of ports should be connected with a bridge as $Q = 0$.
+</p>

@@ -1,0 +1,208 @@
+<!-- Title: Membangun Jalan -->
+
+<h3>Deskripsi</h3>
+
+<p>
+  Pak Dengklek adalah mandor proyek pembangunan jalan di kampung halamannya.
+  Setiap jalan yang dibangun berupa pondasi kerikil yang kemudian dilapisi aspal.
+</p>
+<p>
+  Pak Dengklek akan membeli material dari $N$ buah toko, yang dinomori dari $1$ sampai $N$.
+  Setiap toko hanya menjual satu jenis material.
+  Toko $i$ menjual material sebagai berikut:
+</p>
+<ul>
+  <li>Apabila $T_i = 1$, maka material yang dijual adalah kerikil. Satu karung kerikil yang dijual di toko $i$ dapat digunakan untuk membangun pondasi jalan sepanjang $A_i$ meter.</li>
+  <li>Apabila $T_i = 2$, maka material yang dijual adalah aspal. Satu karung aspal yang dijual di toko $i$ dapat digunakan untuk melapisi jalan sepanjang $A_i$ meter.</li>
+</ul>
+<p>
+  Pak Dengklek mempunyai cara yang unik dalam membangun jalan, yaitu dengan cara:
+</p>
+<ol>
+  <li>Memilih dua bilangan bulat $L$ dan $R$ dengan $1 \le L \le R \le N$.</li>
+  <li>
+    Membeli material dari toko $L$ sampai $R$ secara berurutan.
+    Di toko $L$, setidaknya satu karung material harus dibeli.
+    Di setiap toko berikutnya, banyaknya karung yang dibeli harus lebih banyak daripada yang dibeli tepat di toko sebelumnya.
+  </li>
+  <li>Membangun sebuah pondasi jalan dengan seluruh kerikil yang dibeli.</li>
+  <li>
+    Melapisi pondasi jalan kerikil tersebut dengan aspal yang dibeli.
+    Apabila aspal tidak mencukupi untuk melapisi seluruh jalan, maka sisa ruas jalan dibiarkan tidak beraspal.
+    Apabila aspal tersisa, maka sisa aspal akan dibuang dan tidak digunakan lagi.
+  </li>
+  <li>Pembelian dari toko-toko tersebut harus sedemikian sehingga pada akhirnya, panjang ruas jalan yang tidak beraspal adalah sependek mungkin.</li>
+</ol>
+<p>
+  Pak Dengklek akan melakukan $N$ proyek pembangunan jalan, yang dinomori dari $1$ sampai $N$.
+  Pada proyek ke-$j$, Pak Dengklek akan membangun $j$ buah jalan.
+  Jalan ke-$k$ pada proyek ke-$j$ dibangun sesuai cara di atas dengan memilih $L = k$ dan $R = j$.
+</p>
+<p>
+  Dari seluruh jalan yang dibangun pada seluruh proyeknya, Pak Dengklek ingin tahu total panjang ruas jalan yang tidak beraspal.
+  Karena totalnya bisa jadi sangat besar, Pak Dengklek hanya ingin tahu nilainya modulo $1\;000\;000\;007$.
+  Bantulah Pak Dengklek dalam menghitung nilai tersebut!
+</p>
+
+<h3>Batasan</h3>
+
+<ul>
+  <li>$1 \le N \le 100\;000$</li>
+  <li>$1 \le A_i \le 100\;000$</li>
+  <li>$T_i = 1$ atau $T_i = 2$</li>
+</ul>
+
+<h3>Subsoal</h3>
+
+<ol>
+  <li>
+    &nbsp;&nbsp;(6 poin) Hanya berisi kasus uji berikut:<br/>
+    $N = 4$, $A = [3, 2, 2, 3]$, $T = [1, 2, 2, 1]$.
+  </li>
+  <li>(11 poin) $N \le 400$, $T_i = 1$</li>
+  <li>&nbsp;&nbsp;(9 poin) $N \le 3000$, $T_i = 1$</li>
+  <li>(10 poin) $T_i = 1$</li>
+  <li>(21 poin) $N \le 400$</li>
+  <li>&nbsp;&nbsp;(9 poin) $N \le 3000$</li>
+  <li>(17 poin) Tidak ada $i$ yang memenuhi $T_i = 1$ dan $T_{i+1} = 2$.</li>
+  <li>(17 poin) Tidak ada batasan tambahan.</li>
+</ol>
+
+<h3>Masukan</h3>
+
+<p>
+  Masukan diberikan dalam format berikut:
+</p><pre>
+N
+A<sub>1</sub> A<sub>2</sub> … A<sub>N</sub>
+T<sub>1</sub> T<sub>2</sub> … T<sub>N</sub>
+</pre>
+
+<h3>Keluaran</h3>
+
+<p>
+  Keluarkan sebuah baris yang berisi sebuah bilangan yang menyatakan total panjang ruas jalan yang tidak beraspal modulo $1\;000\;000\;007$.
+</p>
+
+<h3>Contoh Masukan 1</h3>
+
+<pre>
+7
+3 1 1 2 1 2 3
+1 2 1 2 1 2 1
+</pre>
+
+<h3>Contoh Keluaran 1</h3>
+
+<pre>
+53
+</pre>
+
+<h3>Penjelasan Contoh 1</h3>
+
+<p>
+  Berikut adalah panjang ruas jalan yang tidak beraspal untuk setiap jalan pada masing-masing proyek.
+</p>
+
+<table border="1">
+  <thead>
+    <th>Proyek</th>
+    <th>Jalan ke-$1$</th>
+    <th>Jalan ke-$2$</th>
+    <th>Jalan ke-$3$</th>
+    <th>Jalan ke-$4$</th>
+    <th>Jalan ke-$5$</th>
+    <th>Jalan ke-$6$</th>
+    <th>Jalan ke-$7$</th>
+  </thead>
+  <tbody style="text-align: center;">
+    <tr><td>$1$</td><td>$3$</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+    <tr><td>$2$</td><td>$0$</td><td>$0$</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+    <tr><td>$3$</td><td>$4$</td><td>$1$</td><td>$1$</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+    <tr><td>$4$</td><td>$0$</td><td>$0$</td><td>$0$</td><td>$0$</td><td>-</td><td>-</td><td>-</td></tr>
+    <tr><td>$5$</td><td>$0$</td><td>$0$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>-</td><td>-</td></tr>
+    <tr><td>$6$</td><td>$0$</td><td>$0$</td><td>$0$</td><td>$0$</td><td>$0$</td><td>$0$</td><td>-</td></tr>
+    <tr><td>$7$</td><td>$10$</td><td>$7$</td><td>$7$</td><td>$6$</td><td>$6$</td><td>$4$</td><td>$3$</td></tr>
+  </tbody>
+</table>
+
+<p>
+  Sebagai contoh, Pak Dengklek dapat membangun jalan ke-$1$ pada proyek ke-$7$ dengan strategi pembelian material sebagai berikut.
+</p>
+
+<ol>
+  <li>Membeli $1$ karung kerikil di toko $1$, yang cukup untuk pondasi jalan sepanjang $3$ meter.</li>
+  <li>Membeli $4$ karung aspal di toko $2$, yang cukup untuk lapisan jalan sepanjang $4$ meter.</li>
+  <li>Membeli $5$ karung kerikil di toko $3$, yang cukup untuk pondasi jalan sepanjang $5$ meter.</li>
+  <li>Membeli $7$ karung aspal di toko $4$, yang cukup untuk lapisan jalan sepanjang $14$ meter.</li>
+  <li>Membeli $8$ karung kerikil di toko $5$, yang cukup untuk pondasi jalan sepanjang $8$ meter.</li>
+  <li>Membeli $9$ karung aspal di toko $6$, yang cukup untuk lapisan jalan sepanjang $18$ meter.</li>
+  <li>Membeli $10$ karung kerikil di toko $7$, yang cukup untuk pondasi jalan sepanjang $30$ meter.</li>
+</ol>
+
+<p>
+  Dengan strategi pembelian tersebut, Pak Dengklek mendapatkan kerikil yang cukup untuk membangun pondasi jalan sepanjang $46$ meter dan aspal yang cukup untuk melapisi jalan sepanjang $36$ meter.
+  Dengan demikian, panjang ruas jalan yang tidak beraspal adalah $10$ meter, yang merupakan panjang terpendek yang mungkin untuk jalan ini.
+</p>
+
+<p>
+  Sebagai contoh lain, Pak Dengklek dapat membangun jalan ke-$2$ pada proyek ke-$5$ dengan strategi pembelian material sebagai berikut.
+</p>
+
+<ol>
+  <li>Membeli $2$ karung aspal di toko $2$, yang cukup untuk lapisan jalan sepanjang $2$ meter.</li>
+  <li>Membeli $4$ karung kerikil di toko $3$, yang cukup untuk pondasi jalan sepanjang $4$ meter.</li>
+  <li>Membeli $5$ karung aspal di toko $4$, yang cukup untuk lapisan jalan sepanjang $10$ meter.</li>
+  <li>Membeli $7$ karung kerikil di toko $5$, yang cukup untuk pondasi jalan sepanjang $7$ meter.</li>
+</ol>
+
+<p>
+  Dengan strategi pembelian tersebut, Pak Dengklek mendapatkan kerikil yang cukup untuk membangun pondasi jalan sepanjang $11$ meter dan aspal yang cukup untuk melapisi jalan sepanjang $12$ meter.
+  Dengan demikian, tidak ada ruas jalan yang tidak beraspal.
+  Perhatikan bahwa sisa aspalnya dibuang dan tidak dapat digunakan untuk jalan berikutnya, baik pada proyek yang sedang dikerjakan maupun proyek berikutnya.
+</p>
+
+<h3>Contoh Masukan 2</h3>
+
+<pre>
+2
+98427 77780
+1 1
+</pre>
+
+<h3>Contoh Keluaran 2</h3>
+
+<pre>
+430194
+</pre>
+
+<h3>Penjelasan Contoh 2</h3>
+
+<p>
+  Berikut adalah panjang ruas jalan yang tidak beraspal untuk setiap jalan pada masing-masing proyek.
+</p>
+
+<table border="1">
+  <thead>
+    <th>Proyek</th>
+    <th>Jalan ke-$1$</th>
+    <th>Jalan ke-$2$</th>
+  </thead>
+  <tbody style="text-align: center;">
+    <tr><td>$1$</td><td>$98427$</td><td>-</td></tr>
+    <tr><td>$2$</td><td>$253987$</td><td>$77780$</td></tr>
+  </tbody>
+</table>
+
+<p>
+  Sebagai contoh, Pak Dengklek dapat membangun jalan ke-$2$ pada proyek ke-$2$ dengan strategi pembelian material sebagai berikut.
+</p>
+
+<ol>
+  <li>Membeli $1$ karung kerikil di toko $2$, yang cukup untuk pondasi jalan sepanjang $77780$ meter.</li>
+</ol>
+
+<p>
+  Dengan strategi pembelian tersebut, Pak Dengklek mendapatkan kerikil yang cukup untuk membangun pondasi jalan sepanjang $77780$ meter dan tidak mendapatkan aspal sama sekali.
+  Dengan demikian, panjang ruas jalan yang tidak beraspal adalah $77780$ meter.
+</p>

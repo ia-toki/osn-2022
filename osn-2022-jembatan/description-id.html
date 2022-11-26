@@ -1,0 +1,159 @@
+<!-- Title: Membangun Jembatan -->
+
+<h3>Deskripsi</h3>
+
+<p>
+  Di kampung halaman Pak Dengklek, terdapat $N$ buah pelabuhan dan $M$ ruas jalan.
+  Pelabuhan-pelabuhan dinomori dari $1$ sampai $N$ dan ruas-ruas jalan dinomori dari $1$ sampai $M$.
+  Ruas jalan $j$ menghubungkan pelabuhan $U_j$ dengan $V_j$.
+</p>
+<p>
+  Pelabuhan $i$ mempunyai ketinggian $H_i$ meter di atas permukaan air laut.
+  Untuk setiap dua pelabuhan berbeda $u$ dan $v$, Pak Dengklek dapat membangun jembatan yang menghubungkan keduanya dengan biaya $H_u + H_v$ juta rupiah.
+  Untuk alasan keamanan, setiap pelabuhan hanya dapat terhubung dengan <b>paling banyak satu</b> jembatan.
+</p>
+<p>
+  Pak Dengklek ingin membangun nol atau lebih jembatan dengan total biaya sekecil mungkin sedemikian sehingga seluruh pelabuhan saling terhubung.
+  Dengan kata lain, untuk setiap pasang pelabuhan berbeda, harus terdapat jalur yang menghubungkan keduanya, baik secara langsung maupun tidak langsung, melalui ruas jalan maupun jembatan.
+  Bantulah Pak Dengklek menentukan total biaya minimum yang harus dikeluarkan untuk menghubungkan seluruh pelabuhan!
+  Anda juga harus memberi tahu Pak Dengklek apabila ternyata tidak ada cara untuk menghubungkan seluruh pelabuhan.
+</p>
+<p>
+  Pak Dengklek juga mempunyai tingkat keingintahuan sebesar $Q$.
+  Apabila $Q = 1$ dan terdapat cara untuk menghubungkan seluruh pelabuhan,
+  Anda juga diminta untuk membantu menentukan pasangan-pasangan pelabuhan yang perlu dihubungkan.
+  Apabila terdapat lebih dari satu cara, Anda dapat menghubungkan dengan cara mana pun.
+  Namun, apabila $Q = 0$, Anda boleh menyebutkan total biaya minimumnya saja.
+</p>
+
+<h3>Batasan</h3>
+
+<ul>
+  <li>$1 \le N \le 100\;000$</li>
+  <li>$0 \le M \le 200\;000$</li>
+  <li>$Q = 0$ atau $Q = 1$</li>
+  <li>$1 \le H_i \le 10^9$</li>
+  <li>$1 \le U_j < V_j \le N$</li>
+  <li>$U_i \ne U_j$ atau $V_i \ne V_j$, untuk $i \ne j$</li>
+</ul>
+
+<h3>Subsoal</h3>
+
+<ol>
+  <li>&nbsp;&nbsp;(7 poin) Hanya berisi kasus uji berikut: <br/>
+  $N = 15$, $M = 15$, $Q = 1$,<br>
+  $H = [1, 6, 9, 1, 6, 10, 2, 6, 8, 1, 7, 10, 3, 4, 5]$,<br>
+  $U = [1, 2, 1, 4, 5, 4, 7, 7, 8, 10, 11, 10, 13, 13, 14]$,<br>
+  $V = [2, 3, 3, 6, 6, 5, 9, 8, 9, 12, 12, 11, 14, 15, 15]$.
+  <li>&nbsp;&nbsp;(8 poin) $M = N - 2$, $U_j = j$, $V_j = j + 1$</li>
+  <li>(11 poin) $N = 2M$, $U_j = 2j - 1$, $V_j = 2j$</li>
+  <li>(27 poin) $H_i = 1$</li>
+  <li>(10 poin) $N \le 1000$, hanya diperlukan paling banyak $1$ jembatan untuk menghubungkan semua pelabuhan.</li>
+  <li>(13 poin) $N \le 1000$, $Q = 0$</li>
+  <li>(12 poin) $Q = 0$</li>
+  <li>(12 poin) Tidak ada batasan tambahan.</li>
+</ol>
+
+<h3>Masukan</h3>
+
+<p>
+  Masukan diberikan dalam format berikut:
+</p>
+
+<pre>
+N M Q
+H<sub>1</sub> H<sub>2</sub> … H<sub>N</sub>
+U<sub>1</sub> V<sub>1</sub>
+U<sub>2</sub> V<sub>2</sub>
+⋮
+U<sub>M</sub> V<sub>M</sub>
+</pre>
+
+<h3>Keluaran</h3>
+
+<p>
+  Baris pertama berisi sebuah bilangan yang menyatakan total biaya minimum dalam juta rupiah, atau <code>-1</code> apabila tidak ada cara.
+</p>
+<p>
+  Apabila $Q = 1$ dan terdapat cara untuk menghubungkan seluruh pelabuhan,
+  maka dilanjutkan dengan baris kedua yang berisi sebuah bilangan $K$ yang menyatakan banyaknya jembatan yang perlu dibangun.
+  Kemudian, $K$ baris berikutnya berisi dua buah bilangan $X_k$ dan $Y_k$ yang menyatakan jembatan $k$ menghubungkan pelabuhan $X_k$ dan pelabuhan $Y_k$.
+</p>
+<p>
+  Apabila $Q = 0$, Anda masih diperbolehkan untuk mengeluarkan cara tersebut meskipun tidak akan mempengaruhi penilaian.
+</p>
+
+<h3>Contoh Masukan 1</h3>
+
+<pre>
+5 2 1
+4 6 1 3 2
+1 3
+2 4
+</pre>
+
+<h3>Contoh Keluaran 1</h3>
+
+<pre>
+10
+2
+1 4
+5 3
+</pre>
+
+<h3>Penjelasan Contoh 1</h3>
+
+<p>
+  Contoh ini diilustrasikan dengan gambar berikut.
+  Garis kuning menunjukkan jembatan yang dibangun dengan biaya pembangunan tertulis di sebelahnya.
+  Garis putus-putus menunjukkan ruas jalan.
+</p>
+<p style="text-align: center;">
+  <img src="render/sample-1.png" style="width: 300px;">
+</p>
+<p>
+  Biaya untuk membangun kedua jembatan tersebut adalah $H_1 + H_4 = 4 + 3 = 7$ dan $H_3 + H_5 = 1 + 2 = 3$.
+  Total biayanya adalah $7 + 3 = 10$, yang merupakan total biaya minimum.
+</p>
+
+<h3>Contoh Masukan 2</h3>
+
+<pre>
+5 1 1
+2 1 4 3 4
+3 5
+</pre>
+
+<h3>Contoh Keluaran 2</h3>
+
+<pre>
+-1
+</pre>
+
+<h3>Penjelasan Contoh 2</h3>
+
+<p>
+  Tidak ada cara untuk menghubungkan seluruh pelabuhan karena pada setiap pelabuhan hanya dapat dibangun paling banyak satu jembatan.
+  Oleh karena itu, meskipun $Q = 1$, tidak perlu mengeluarkan pasangan-pasangan pelabuhan yang perlu dihubungkan.
+</p>
+
+<h3>Contoh Masukan 3</h3>
+
+<pre>
+3 1 0
+2 8 1
+1 3
+</pre>
+
+<h3>Contoh Keluaran 3</h3>
+
+<pre>
+9
+</pre>
+
+<h3>Penjelasan Contoh 3</h3>
+
+<p>
+  Pasangan pelabuhan yang perlu dihubungkan adalah pelabuhan $2$ dengan pelabuhan $3$.
+  Anda tidak perlu mengeluarkan pasangan-pasangan pelabuhan yang perlu dihubungkan karena $Q = 0$.
+</p>

@@ -1,0 +1,220 @@
+<!-- Title: Membangun Terowongan -->
+
+<h3>Deskripsi</h3>
+
+<p>
+  Pada proyek Pak Dengklek, terdapat $N$ lokasi tambang bawah tanah yang dinomori dari $1$ sampai $N$.
+  Untuk setiap pasang lokasi berbeda $u$ dan $v$, Pak Dengklek dapat membangun terowongan yang menghubungkan keduanya dengan biaya $C_{u,v}$.
+  Pak Dengklek dapat memastikan bahwa $C_{u,v} = A$ atau $C_{u,v} = B$, tetapi Pak Dengklek tidak mengetahui nilai dari $A$, $B$, maupun $C_{u,v}$.
+</p><p>
+  Pak Dengklek memiliki alat pengukur bawah tanah.
+  Untuk menggunakan alat tersebut, pertama-tama Pak Dengklek menandai setiap lokasi dengan warna merah, kuning, atau hijau.
+  Setelah itu, alat tersebut akan memberitahukan total biaya yang diperlukan untuk membangun terowongan antara setiap pasang lokasi yang berwarna kuning dengan yang berwarna hijau.
+  Warna merah, kuning, dan hijau direpresentasikan dengan angka $0$, $1$, dan $2$ secara berturut-turut.
+  Dengan kata lain, apabila setiap lokasi $i$ ditandai dengan warna $W_i$, maka alat tersebut akan memberitahukan nilai dari $\displaystyle\sum\limits_{W_u = 1} \sum\limits_{W_v = 2} C_{u,v}$.
+</p><p>
+  Pak Dengklek ingin membangun satu atau lebih terowongan sedemikian sehingga setiap pasang lokasi saling terhubung,
+  baik secara langsung maupun tidak langsung melalui serangkaian terowongan yang menghubungkan lokasi-lokasi lain di antara keduanya.
+  Namun, alat tersebut hanya dapat digunakan paling banyak $2000$ kali.
+  Bantulah Pak Dengklek menentukan pasangan-pasangan lokasi yang perlu dihubungkan, sedemikian sehingga total biaya yang dibutuhkan sekecil mungkin.
+  Apabila terdapat lebih dari satu cara, Anda dapat menghubungkan dengan cara mana pun.
+</p>
+
+<h3>Batasan</h3>
+
+<ul>
+  <li>$2 \le N \le 140$</li>
+  <li>$1 \le A < B \le 1000$</li>
+  <li>$C_{u,v} = A$ atau $C_{u,v} = B$</li>
+  <li>$C_{u,v} = C_{v,u}$</li>
+</ul>
+
+<h3>Subsoal</h3>
+
+<ol>
+  <li>(14 poin) $N \le 5$</li>
+  <li>(11 poin) $N \le 60$</li>
+  <li>(16 poin) $A = 1$, $B = 2$, untuk setiap lokasi $u$, paling banyak terdapat satu lokasi $v$ (dengan $u < v$) yang memenuhi $C_{u,v} = A$.</li>
+  <li>(15 poin) $A = 1$, $B = 2$</li>
+  <li>&nbsp;&nbsp;(9 poin) Paling banyak terdapat $1$ pasangan $(u,v)$ (dengan $u < v$) yang memenuhi $C_{u,v} = A$.</li>
+  <li>(35 poin) Tidak ada batasan tambahan.</li>
+</ol>
+
+<h3>Informasi Tipe Soal</h3>
+
+<p>
+  Soal ini bertipe "interaktif".
+  Pada soal ini Anda akan berinteraksi dengan program penguji melalui standar masukan (stdin) dan standar keluaran (stdout).
+  Perhatikan interaksi di bawah ini dengan saksama.
+</p>
+
+<h3>Interaksi</h3>
+
+<p>
+  Pada awalnya, Anda akan diberikan nilai $N$ dalam format berikut:
+</p><pre>
+N
+</pre>
+
+<p>Kemudian, sebanyak tidak lebih dari $2000$ kali, Anda dapat menghasilkan keluaran dalam format berikut:</p>
+
+<pre>
+? W<sub>1</sub> W<sub>2</sub> … W<sub>N</sub>
+</pre>
+
+<p>
+  Ini berarti Anda menandai lokasi $i$ dengan warna $W_i$ lalu menggunakan alat tersebut.
+  Nilai $W_i$ harus memenuhi $0 \le W_i \le 2$.
+  Untuk setiap keluaran tersebut, total biaya yang diperlukan (dinotasikan dengan $T$) akan diberikan oleh alat melalui masukan dengan format berikut:
+</p>
+
+<pre>
+T
+</pre>
+
+<p>
+  Pada akhirnya, Anda dapat memberikan jawaban dengan menghasilkan keluaran dengan format berikut:
+</p>
+
+<pre>
+! M
+u<sub>1</sub> v<sub>1</sub>
+u<sub>2</sub> v<sub>2</sub>
+⋮
+u<sub>M</sub> v<sub>M</sub>
+</pre>
+
+<p>
+  Ini berarti Anda membangun $M$ terowongan yang dinomori dari $1$ sampai $M$.
+  Terowongan $j$ menghubungkan antara lokasi $u_j$ dan $v_j$.
+</p>
+
+<h3>Penilaian</h3>
+
+<p>
+  Apabila Anda tidak berhasil menghubungkan seluruh lokasi, tidak mendapatkan total biaya sekecil mungkin, menggunakan alat sebanyak lebih dari $2000$ kali, atau memberikan masukan dengan format yang salah, maka Anda akan mendapatkan "Wrong Answer".
+  Jawaban Anda akan dianggap benar jika Anda berhasil menghubungkan seluruh lokasi dengan biaya sekecil mungkin tanpa menggunakan alat lebih dari $2000$ kali, dan Anda akan mendapatkan nilai penuh atau nilai parsial.
+</p>
+
+<p>
+  Khusus untuk subsoal 6, Anda bisa mendapatkan nilai parsial.
+  Rumus yang digunakan untuk menentukan nilai Anda bergantung pada banyaknya penggunaan alat pengukur bawah tanah.
+  Misalkan $Q$ adalah banyaknya penggunaan alat tersebut.
+  Nilai yang Anda dapatkan dihitung berdasarkan tabel berikut:
+</p>
+
+<table border="1">
+  <thead>
+    <th>Kondisi</th>
+    <th>Poin</th>
+  </thead>
+  <tbody style="text-align: center;">
+    <tr><td style="text-align: left;">$2000 < Q$</td><td>$0$</td></tr>
+    <tr><td>$1170 < Q \le 2000$</td><td>$\lfloor 5 + \large\frac{2000}{Q - 1000} \rfloor$</td></tr>
+    <tr><td>$1000 < Q \le 1170$</td><td>$\lfloor 36 - 2^{\small\frac{Q - 1000}{40}} \rfloor$</td></tr>
+    <tr><td style="text-align: right;">$Q \le 1000$</td><td>$35$</td></tr>
+  </tbody>
+</table>
+
+<h3>Contoh Interaksi</h3>
+
+<p>
+  Pada contoh berikut, $N = 4$, $A = 1$, $B = 2$, dan $C_{u,v}$:
+</p>
+
+<ul>
+  <li>$C_{1,2} = 1$;</li>
+  <li>$C_{1,3} = 1$;</li>
+  <li>$C_{1,4} = 2$;</li>
+  <li>$C_{2,3} = 2$;</li>
+  <li>$C_{2,4} = 2$;</li>
+  <li>$C_{3,4} = 2$.</li>
+</ul>
+
+<p>
+  Lokasi-lokasi tambang beserta biaya-biaya pembangunan terowongan diilustrasikan dengan gambar berikut.
+</p>
+
+<p style="text-align: center;">
+  <img src="render/sample-complete.png" style="width: 300px;">
+</p>
+
+<table>
+  <tr>
+    <th>Masukan</th>
+    <th>Keluaran</th>
+    <th>Penjelasan</th>
+  </tr>
+  <tr>
+    <td><pre>4</pre></td>
+    <td></td>
+    <td>Ini berarti terdapat $4$ lokasi tambang bawah tanah.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><pre>? 1 2 2 0</pre></td>
+    <td>Anda menandai lokasi $1$ dengan warna kuning, lokasi $2$ dan $3$ dengan warna hijau, serta lokasi $4$ dengan warna merah.</td>
+  </tr>
+  <tr>
+    <td><pre>2</pre></td>
+    <td></td>
+    <td>Alat tersebut memberitahu bahwa total biaya yang diperlukan adalah $2$.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><pre>? 2 2 2 1</pre></td>
+    <td>Anda menandai lokasi $1$, $2$, dan $3$ dengan warna hijau serta lokasi $4$ dengan warna kuning.</td>
+  </tr>
+  <tr>
+    <td><pre>6</pre></td>
+    <td></td>
+    <td>Alat tersebut memberitahu bahwa total biaya yang diperlukan adalah $6$.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><pre>? 0 1 2 0</pre></td>
+    <td>Anda menandai lokasi $2$ dengan warna kuning, lokasi $3$ dengan warna hijau, serta lokasi $1$ dan $4$ dengan warna merah.</td>
+  </tr>
+  <tr>
+    <td><pre>2</pre></td>
+    <td></td>
+    <td>Alat tersebut memberitahu bahwa total biaya yang diperlukan adalah $2$.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><pre>! 3
+1 2
+1 3
+1 4</pre></td>
+    <td>
+      Anda membangun terowongan-terowongan yang menghubungkan pasangan-pasangan lokasi $(1,2)$, $(1,3)$, dan $(1,4)$.
+      Anda juga dapat membangun terowongan-terowongan yang menghubungkan pasangan-pasangan lokasi $(1,2)$, $(1,3)$, dan $(3,4)$ dengan total biaya yang sama.
+    </td>
+  </tr>
+  <tr>
+    <td>(selesai)</td>
+    <td>(selesai)</td>
+    <td>Interaksi berakhir, jawaban tersebut benar, dan Anda mendapatkan "Accepted" pada kasus uji ini.</td>
+  </tr>
+</table>
+
+<p>
+  Terowongan-terowongan yang dibangun diilustrasikan dengan gambar berikut.
+</p>
+
+<p style="text-align: center;">
+  <img src="render/sample-constructed.png" style="width: 300px;">
+</p>
+
+<h3>Peringatan</h3>
+
+<p>
+  Selalu lakukan <em>flush</em> setiap kali setelah program Anda mengeluarkan keluaran.
+</p>
+
+<ul>
+  <li>Untuk library <code>stdio.h</code> (<code>cstdio</code>):<pre>
+fflush(stdout);</pre></li>
+  <li>Untuk library <code>iostream</code>:<pre>
+std::cout << std::flush;</pre></li>
+</ul>

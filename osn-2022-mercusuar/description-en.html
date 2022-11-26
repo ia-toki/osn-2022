@@ -1,0 +1,155 @@
+<!-- Title: Building Lighthouses -->
+
+<h3>Description</h3>
+
+<p>
+  Pak Dengklek owns $N$ lighthouses located on a straight line.
+  The lighthouses are numbered from $1$ to $N$ from west to east.
+  The height of lighthouse $i$ is $A_i$ metres.
+</p>
+<p>
+  There is a lamp at the top of each lighthouse.
+  The lamp from lighthouse $i$ emits light to the west and to the east at the height of $A_i$ metres.
+  Two lamps from two different lighthouses $p$ and $q$ ($p \ne q$) illuminate each other if and only if:
+</p>
+<ul>
+  <li>both lighthouses have the same height, or in other words, $A_p = A_q$; and</li>
+  <li>all lighthouses between them are lower, or in other words, $A_r < A_p$ for each $\min(p, q) < r < \max(p, q)$.</li>
+</ul> 
+<p>
+ Pak Dengklek wants each lamp to be illuminated by <b>at least one</b> other lamp.
+  As an example, consider the following illustration.
+</p>
+<p style="text-align: center;">
+  <img src="render/explanation.png" style="width: 400px;">
+</p>
+<p>
+  Here, lamps from lighthouse $2$ and lighthouse $3$ illuminate each other, and so do lamps from lighthouse $5$ and lighthouse $6$ and lamps from lighthouse $6$ and lighthouse $7$.
+  However, the lighthouses do not satisfy the requirement, as the lamps from lighthouse $1$ and lighthouse $4$ are not illuminated by any other lamps.
+</p>
+<p>
+  To satisfy the requirement, Pak Dengklek can increase the height of any lighthouse, which costs one million rupiahs per metre.
+  Pak Dengklek can choose to increase the heights of zero or more lighthouses.
+  Help Pak Dengklek determine the minimum possible total cost to satisfy the requirement!
+</p>
+
+<h3>Constraints</h3>
+
+<ul>
+  <li>$2 \le N \le 100\;000$</li>
+  <li>$1 \le A_i \le 10^9$</li>
+</ul>
+
+<h3>Subtasks</h3>
+
+<ol>
+  <li>
+    &nbsp;&nbsp;(5 points) Contains only the following test case:<br/>
+    $N = 12$, $A = [9, 10, 4, 3, 5, 7, 5, 2, 7, 20, 2, 3]$.
+  </li>
+  <li>&nbsp;&nbsp;(7 points) $N \le 8$</li>
+  <li>&nbsp;&nbsp;(6 points) $A_i \le 2$</li>
+  <li>&nbsp;&nbsp;(9 points) $A_i \le A_{i+1}$</li>
+  <li>(12 points) $N \le 30$</li>
+  <li>(13 points) $N \le 80$</li>
+  <li>(10 points) $N \le 300$, there exists $k$ ($1 \le k \le N$) satisfying $A_i \ge A_{i+1}$ for each $1 \le i \le k-1$ and $A_i \le A_{i+1}$ for each $k \le i \le N-1$.</li>
+  <li>(12 points) $N \le 300$</li>
+  <li>(14 points) $N \le 1500$</li>
+  <li>(12 points) No additional constraints.</li>
+</ol>
+
+<h3>Input</h3>
+
+<p>
+  The input is given with the following format:
+</p><pre>
+N
+A<sub>1</sub> A<sub>2</sub> … A<sub>N</sub>
+</pre>
+
+<h3>Output</h3>
+
+<p>
+  Output a line containing an integer representing the minimum possible total cost in million rupiahs.
+</p>
+
+<h3>Sample Input 1</h3>
+
+<pre>
+6
+2 1 1 3 2 2
+</pre>
+
+<h3>Sample Output 1</h3>
+
+<pre>
+1
+</pre>
+
+<h3>Explanation of Sample 1</h3>
+
+<p>
+  Pak Dengklek can increase the height of lighthouse $1$ from $2$ metres to $3$ metres, costing $1$ million rupiahs.
+</p>
+
+<h3>Sample Input 2</h3>
+
+<pre>
+4
+3 1 2 1
+</pre>
+
+<h3>Sample Output 2</h3>
+
+<pre>
+3
+</pre>
+
+<h3>Explanation of Sample 2</h3>
+
+<p>
+  Pak Dengklek can increase the heights of the lighthouses as follows.
+</p>
+<ul>
+  <li>Increase the height of lighthouse $2$ from $1$ metre to $2$ metres, costing $1$ million rupiahs.</li>
+  <li>Increase the height of lighthouse $4$ from $1$ metre to $3$ metres, costing $2$ million rupiahs.</li>
+</ul>
+<p>
+  The total cost that Pak Dengklek needs is $1 + 2 = 3$ million rupiahs.
+  Then, the heights of the lighthouses from west to east will become $3$, $2$, $2$, $3$, respectively.
+  With this, the lamps from lighthouses $1$ and $4$ will illuminate each other, and so do lighthouses $2$ and $3$, as illustrated by the following image.
+</p>
+<p style="text-align: center;">
+  <img src="render/sample-2.png" style="width: 300px;">
+</p>
+<p>
+  Pak Dengklek can also choose to increase the heights of the lighthouses so that the heights from west to east become $3$, $3$, $2$, $2$, respectively, with the same total cost.
+</p>
+
+<h3>Sample Input 3</h3>
+
+<pre>
+8
+17 10 13 11 11 8 14 14
+</pre>
+
+<h3>Sample Output 3</h3>
+
+<pre>
+11
+</pre>
+
+<h3>Explanation of Sample 3</h3>
+
+<p>
+  Pak Dengklek can increase the heights of the lighthouses as follows.
+</p>
+<ul>
+  <li>Increase the height of lighthouse $2$ from $10$ metres to $17$ metres, costing $7$ million rupiahs.</li>
+  <li>Increase the height of lighthouse $3$ from $13$ metres to $14$ metres, costing $1$ million rupiahs.</li>
+  <li>Increase the height of lighthouse $6$ from $8$ metres to $11$ metres, costing $3$ million rupiahs.</li>
+</ul>
+<p>
+  The total cost that Pak Dengklek needs is $7 + 1 + 3 = 11$ million rupiahs.
+  With this, the heights of the lighthouses from west to east will become $17$, $17$, $14$, $11$, $11$, $11$, $14$, $14$, respectively.
+</p>

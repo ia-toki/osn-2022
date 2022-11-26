@@ -1,0 +1,155 @@
+<!-- Title: Membangun Mercusuar -->
+
+<h3>Deskripsi</h3>
+
+<p>
+  Pada proyek Pak Dengklek, terdapat $N$ buah mercusuar yang berjajar membentuk garis lurus.
+  Mercusuar-mercusuar tersebut dinomori dari $1$ sampai $N$ dari barat ke timur.
+  Tinggi dari mercusuar $i$ adalah $A_i$ meter.
+</p>
+<p>
+  Terdapat sebuah pemancar di atas setiap mercusuar.
+  Pemancar pada mercusuar $i$ memancarkan sinar lurus ke barat dan ke timur pada ketinggian $A_i$ meter.
+  Dua buah pemancar pada dua mercusuar berbeda $p$ dan $q$ ($p \ne q$) akan saling menyinari jika dan hanya jika:
+</p>
+<ul>
+  <li>keduanya sama tinggi, atau dengan kata lain, $A_p = A_q$; dan</li>
+  <li>seluruh mercusuar di antara keduanya lebih rendah, atau dengan kata lain, $A_r < A_p$ untuk setiap $\min(p, q) < r < \max(p, q)$.</li>
+</ul> 
+<p>
+  Pak Dengklek ingin agar setiap pemancar tersinari oleh <b>setidaknya satu</b> pemancar lain.
+  Sebagai contoh, perhatikan ilustrasi berikut.
+</p>
+<p style="text-align: center;">
+  <img src="render/explanation.png" style="width: 400px;">
+</p>
+<p>
+  Di sini, pemancar pada mercusuar $2$ dan mercusuar $3$ saling menyinari, begitu pula dengan pemancar pada mercusuar $5$ dan mercusuar $6$ dan pemancar pada mercusuar $6$ dan mercusuar $7$.
+  Akan tetapi, mercusuar-mercusuar tersebut tidak memenuhi syarat, karena pemancar pada mercusuar $1$ dan mercusuar $4$ tidak tersinari oleh pemancar lain.
+</p>
+<p>
+  Untuk memenuhi syarat tersebut, Pak Dengklek dapat meningkatkan tinggi mercusuar mana pun dengan biaya satu juta rupiah per meter.
+  Pak Dengklek dapat meningkatkan tinggi dari nol atau lebih mercusuar.
+  Bantulah Pak Dengklek menghitung total biaya minimum yang harus dikeluarkan untuk memenuhi syarat tersebut!
+</p>
+
+<h3>Batasan</h3>
+
+<ul>
+  <li>$2 \le N \le 100\;000$</li>
+  <li>$1 \le A_i \le 10^9$</li>
+</ul>
+
+<h3>Subsoal</h3>
+
+<ol>
+  <li>
+    &nbsp;&nbsp;(5 poin) Hanya berisi kasus uji berikut:<br/>
+    $N = 12$, $A = [9, 10, 4, 3, 5, 7, 5, 2, 7, 20, 2, 3]$.
+  </li>
+  <li>&nbsp;&nbsp;(7 poin) $N \le 8$</li>
+  <li>&nbsp;&nbsp;(6 poin) $A_i \le 2$</li>
+  <li>&nbsp;&nbsp;(9 poin) $A_i \le A_{i+1}$</li>
+  <li>(12 poin) $N \le 30$</li>
+  <li>(13 poin) $N \le 80$</li>
+  <li>(10 poin) $N \le 300$, terdapat nilai $k$ (dengan $1 \le k \le N$) yang memenuhi $A_i \ge A_{i+1}$ untuk $1 \le i \le k-1$ dan $A_i \le A_{i+1}$ untuk $k \le i \le N-1$.</li>
+  <li>(12 poin) $N \le 300$</li>
+  <li>(14 poin) $N \le 1500$</li>
+  <li>(12 poin) Tidak ada batasan tambahan.</li>
+</ol>
+
+<h3>Masukan</h3>
+
+<p>
+  Masukan diberikan dalam format berikut:
+</p><pre>
+N
+A<sub>1</sub> A<sub>2</sub> … A<sub>N</sub>
+</pre>
+
+<h3>Keluaran</h3>
+
+<p>
+  Keluarkan sebuah baris yang berisi sebuah bilangan yang menyatakan total biaya minimum dalam juta rupiah.
+</p>
+
+<h3>Contoh Masukan 1</h3>
+
+<pre>
+6
+2 1 1 3 2 2
+</pre>
+
+<h3>Contoh Keluaran 1</h3>
+
+<pre>
+1
+</pre>
+
+<h3>Penjelasan Contoh 1</h3>
+
+<p>
+  Pak Dengklek dapat meningkatkan tinggi mercusuar $1$ dari $2$ meter menjadi $3$ meter, dengan biaya $1$ juta rupiah.
+</p>
+
+<h3>Contoh Masukan 2</h3>
+
+<pre>
+4
+3 1 2 1
+</pre>
+
+<h3>Contoh Keluaran 2</h3>
+
+<pre>
+3
+</pre>
+
+<h3>Penjelasan Contoh 2</h3>
+
+<p>
+  Pak Dengklek dapat meningkatkan tinggi dari mercusuar-mercusuar sebagai berikut.
+</p>
+<ul>
+  <li>Meningkatkan tinggi mercusuar $2$ dari $1$ meter menjadi $2$ meter, dengan biaya $1$ juta rupiah.</li>
+  <li>Meningkatkan tinggi mercusuar $4$ dari $1$ meter menjadi $3$ meter, dengan biaya $2$ juta rupiah.</li>
+</ul>
+<p>
+  Total biaya yang diperlukan Pak Dengklek adalah $1 + 2 = 3$ juta rupiah.
+  Setelah semua perubahan tersebut dilakukan, tinggi mercusuar berturut-turut dari barat ke timur adalah $3$, $2$, $2$, $3$.
+  Dengan demikian, pemancar pada mercusuar $1$ dan $4$ akan saling menyinari serta pemancar pada mercusuar $2$ dan $3$ juga akan saling menyinari seperti yang diilustrasikan dengan gambar berikut.
+</p>
+<p style="text-align: center;">
+  <img src="render/sample-2.png" style="width: 300px;">
+</p>
+<p>
+  Pak Dengklek juga dapat mengubah tinggi mercusuar secara berurutan dari barat ke timur menjadi $3$, $3$, $2$, $2$ dengan total biaya yang sama.
+</p>
+
+<h3>Contoh Masukan 3</h3>
+
+<pre>
+8
+17 10 13 11 11 8 14 14
+</pre>
+
+<h3>Contoh Keluaran 3</h3>
+
+<pre>
+11
+</pre>
+
+<h3>Penjelasan Contoh 3</h3>
+
+<p>
+  Pak Dengklek dapat meningkatkan tinggi dari mercusuar-mercusuar sebagai berikut.
+</p>
+<ul>
+  <li>Meningkatkan tinggi mercusuar $2$ dari $10$ meter menjadi $17$ meter, dengan biaya $7$ juta rupiah.</li>
+  <li>Meningkatkan tinggi mercusuar $3$ dari $13$ meter menjadi $14$ meter, dengan biaya $1$ juta rupiah.</li>
+  <li>Meningkatkan tinggi mercusuar $6$ dari $8$ meter menjadi $11$ meter, dengan biaya $3$ juta rupiah.</li>
+</ul>
+<p>
+  Total biaya yang diperlukan Pak Dengklek adalah $7 + 1 + 3 = 11$ juta rupiah.
+  Setelah semua perubahan tersebut dilakukan, tinggi mercusuar berturut-turut dari barat ke timur adalah $17$, $17$, $14$, $11$, $11$, $11$, $14$, $14$.
+</p>
